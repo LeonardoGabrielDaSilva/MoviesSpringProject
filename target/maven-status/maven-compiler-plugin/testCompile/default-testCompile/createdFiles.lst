@@ -1,0 +1,5 @@
+pt\com\leogds\domain\user\UserRepositoryTest.class
+pt\com\leogds\domain\user\UserServiceTest.class
+pt\com\leogds\domain\movie\MovieRepositoryTest.class
+pt\com\leogds\SpringProjectApplicationTests.class
+pt\com\leogds\domain\movie\MovieServiceImdbTest.class

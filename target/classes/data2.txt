@@ -1,0 +1,24 @@
+
+CREATE TABLE tbuser (
+    usrid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usrname VARCHAR(30) NOT NULL,
+    usrpassword VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE tbrole (
+    rleid INT PRIMARY KEY,
+    rlename VARCHAR(15) NOT NULL DEFAULT 'ROLE_USER',
+    CONSTRAINT check_role CHECK (rlename in ('ROLE_USER', 'ROLE_ADMIN')) 
+);
+
+CREATE TABLE tbuser_role (
+    usrid INT,
+    rleid INT,
+    PRIMARY KEY (usrid, rleid),
+    FOREIGN KEY (usrid) REFERENCES tbuser(usrid),
+    FOREIGN KEY (rleid) REFERENCES tbrole(rleid)
+);
+
+INSERT INTO TBUSER(usrname, usrpassword) VALUES ('teste1', '$2a$12$WYtIHUiV0PEYewXOftPwj.zhHgWeQ5fjS7ETAmJApWRwMJT2WJAWi');
+INSERT INTO tbrole(rleid, rlename) VALUES (1,'ROLE_USER');
+INSERT INTO tbrole(rleid, rlename) VALUES (2,'ROLE_ADMIN');
