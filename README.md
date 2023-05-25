@@ -1,6 +1,6 @@
 # MoviesSpringProject
 
-Introduction:
+
 This Java project is a Spring-based API designed to consume the Imdb and Tmdb APIs and populate a database with movies. It provides additional functionality for user login, allowing them to add favorite movies to their list. Each favorite movie is given a star rating, and the API also includes a ranking feature to showcase the top-rated movies. The project utilizes various technologies and frameworks such as Feign, Spring Security with JWT, Spring Data, Roles, Hazelcast cache, CircuitBreaker fallbacks, Swagger, and H2 database.
 
 Features and Components:
