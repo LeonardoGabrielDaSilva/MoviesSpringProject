@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import pt.com.leogds.domain.movie.Movie;
 import pt.com.leogds.domain.movie.MovieServiceImdb;
@@ -32,7 +32,7 @@ public class MovieController {
 	
 	@PostMapping("populate")
 	@Secured(RoleEnum.Constants.ADMIN)
-	@RateLimiter(name = "populateSchema", fallbackMethod = "populateFallBack")
+	@CircuitBreaker(name = "populateSchema", fallbackMethod = "populateFallBack")
 	public ResponseEntity<List<Movie>> populate() {
 		List<Movie> movies = primaryMovieService.populateSchema();
 		return ResponseEntity.ok(movies);
