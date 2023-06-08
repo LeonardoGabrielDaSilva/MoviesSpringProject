@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
+import pt.com.leogds.domain.movie.dto.ReturnMovieData;
 import pt.com.leogds.domain.user.User;
 import pt.com.leogds.domain.user.UserRepository;
 
@@ -19,23 +20,20 @@ public abstract class MovieServiceTemplate {
 	@Autowired
 	protected MovieRepository movieRepository;
 
-	abstract public List<Movie> populateSchema();
+	abstract public List<ReturnMovieData> populateSchema();
 
-	public List<Movie> listAll(){
-		return movieRepository.findAll();
+	public List<ReturnMovieData> listAll(){
+		 List<Movie> allMovies = movieRepository.findAll();
+		 return allMovies.stream().map(m -> new ReturnMovieData(m)).collect(Collectors.toList());
 	}
 
-	@Cacheable("rank")
-	public List<Movie> listTop10StarMovies() {
-		try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-		return movieRepository.findTop10ByOrderByStarDesc();
+	@Cacheable("top10Movies")
+	public List<ReturnMovieData> listTop10StarMovies() {
+		List<Movie> top10Movies = movieRepository.findTop10ByOrderByStarDesc();
+		return top10Movies.stream().map(m -> new ReturnMovieData(m)).collect(Collectors.toList());
 	}
 
-	public Movie recommendSimilarMovie(String username) {
+	public ReturnMovieData recommendSimilarMovie(String username) {
 		User user = userRepository.findByUsername(username);
 
 		// Get the user's favorites
@@ -53,10 +51,10 @@ public abstract class MovieServiceTemplate {
 		}
 
 		if (randomMovie == null) {
-			randomMovie = movieRepository.findRandomMovie().get();
+			randomMovie = movieRepository.findRandomMovieNotInMovieIds(userFavorites).get();
 		}
 
-		return randomMovie;
+		return new ReturnMovieData(randomMovie);
 	}
 
 	private Movie getRandomMovieFromUserList(List<Long> userFavorites, List<Long> similarUsersIds) {

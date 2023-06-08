@@ -11,12 +11,16 @@ public interface MovieRepository extends JpaRepositoryImplementation<Movie, Long
 
 	List<Movie> findTop10ByOrderByStarDesc();
 
-	@Query("SELECT um FROM User u " + "JOIN u.favoriteMovies um " + "WHERE u.id = :userId AND um.id NOT IN :movieIds "
-			+ "ORDER BY FUNCTION('RAND') LIMIT 1")
+	@Query("SELECT um FROM User u " +
+			"JOIN u.favoriteMovies um " + 
+				"WHERE u.id = :userId AND um.id NOT IN :movieIds " +
+			"ORDER BY RAND() LIMIT 1")
 	Optional<Movie> findRandomMovieByUserIdAndNotInMovieIds(@Param("userId") Long userId,
 			@Param("movieIds") List<Long> movieId);
 
-	@Query(value = "SELECT * FROM tbmovie ORDER BY RAND() LIMIT 1", nativeQuery = true)
-	Optional<Movie> findRandomMovie();
+	@Query("SELECT m FROM Movie m " +
+				"WHERE m.id NOT IN :movieIds " + 
+			"ORDER BY RAND() LIMIT 1")
+	Optional<Movie> findRandomMovieNotInMovieIds(@Param("movieIds") List<Long> userId);
 
 }

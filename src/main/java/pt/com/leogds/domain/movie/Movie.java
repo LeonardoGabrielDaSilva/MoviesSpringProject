@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tbmovie")
 @DynamicInsert
 public class Movie {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -42,6 +42,7 @@ public class Movie {
     public Movie(String title, Integer year) {
     	this.title = title;
     	this.year = year;
+    	this.star = 0;
     }
     
     public void addStar() {

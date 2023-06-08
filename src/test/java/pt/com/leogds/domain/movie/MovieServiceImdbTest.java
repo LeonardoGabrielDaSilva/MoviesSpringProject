@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import pt.com.leogds.domain.movie.dto.ReturnMovieData;
 import pt.com.leogds.domain.user.User;
 import pt.com.leogds.domain.user.UserRepository;
 
@@ -34,9 +35,9 @@ class MovieServiceImdbTest {
 		saveMovies(movie1, movie2, movie3);
 		saveUsers(user1, user2);
 		
-		Movie similarMovie = movieService.recommendSimilarMovie("teste1");
+		ReturnMovieData similarMovie = movieService.recommendSimilarMovie("teste1");
 		movie2 = movieRepository.findById(movie2.getId()).orElse(null);
-		assertThat(similarMovie.equals(movie2));
+		assertThat(similarMovie.equals(new ReturnMovieData(movie2)));
 	}
 	
 
