@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pt.com.leogds.domain.movie.MovieRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.149 s - in pt.com.leogds.domain.movie.MovieRepositoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.344 s - in pt.com.leogds.domain.movie.MovieRepositoryTest

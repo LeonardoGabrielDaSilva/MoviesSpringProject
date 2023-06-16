@@ -38,6 +38,10 @@ public abstract class MovieServiceTemplate {
 
 		// Get the user's favorites
 		List<Long> userFavorites = user.getFavoriteMovies().stream().map(Movie::getId).collect(Collectors.toList());
+		
+		if(userFavorites.isEmpty()) {
+			return new ReturnMovieData(movieRepository.findRandomMovie().get());
+		}
 
 		// Get similar users from favorite movies
 		List<Long> similarUsersIds = userRepository.findSimilarUserIds(user.getId())
@@ -57,6 +61,12 @@ public abstract class MovieServiceTemplate {
 		return new ReturnMovieData(randomMovie);
 	}
 
+	/**
+	 * 
+	 * @param userFavorites List of favorite movies Ids from the user
+	 * @param similarUsersIds List of users Ids with similar movies in favorite list
+	 * @return A random movie from a favorite list of a similar user
+	 */
 	private Movie getRandomMovieFromUserList(List<Long> userFavorites, List<Long> similarUsersIds) {
 		Movie randomMovie;
 		Long similarUserId = similarUsersIds.get(new Random().nextInt(similarUsersIds.size()));

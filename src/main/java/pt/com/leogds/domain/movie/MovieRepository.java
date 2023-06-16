@@ -14,13 +14,17 @@ public interface MovieRepository extends JpaRepositoryImplementation<Movie, Long
 	@Query("SELECT um FROM User u " +
 			"JOIN u.favoriteMovies um " + 
 				"WHERE u.id = :userId AND um.id NOT IN :movieIds " +
-			"ORDER BY RAND() LIMIT 1")
+			"ORDER BY RANDOM() LIMIT 1")
 	Optional<Movie> findRandomMovieByUserIdAndNotInMovieIds(@Param("userId") Long userId,
 			@Param("movieIds") List<Long> movieId);
 
 	@Query("SELECT m FROM Movie m " +
 				"WHERE m.id NOT IN :movieIds " + 
-			"ORDER BY RAND() LIMIT 1")
+			"ORDER BY RANDOM() LIMIT 1")
 	Optional<Movie> findRandomMovieNotInMovieIds(@Param("movieIds") List<Long> userId);
 
+	@Query(value = "SELECT m FROM Movie m ORDER BY RANDOM() LIMIT 1")
+    Optional<Movie> findRandomMovie();
+
+	
 }

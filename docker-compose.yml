@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:15.3
+    container_name: postgres_db
+    networks:
+      - movies-project-bridge
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: movies_spring_project
+    ports:
+      - 5432:5432
+    volumes:
+      - ./volume/data.sql:/docker-entrypoint-initdb.d/1.sql
+
+  spring_project:
+    image: leonardogsilva/movies-spring-project:1.0
+    container_name: moviesproject
+    networks:
+      - movies-project-bridge
+    ports:
+      - 8081:8081
+    depends_on:
+      - postgres
+
+networks:
+  movies-project-bridge:
+    driver: bridge

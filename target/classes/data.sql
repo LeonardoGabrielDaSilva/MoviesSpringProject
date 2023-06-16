@@ -1,4 +1,3 @@
-
 INSERT INTO TBUSER(username, password) VALUES ('teste1', '$2a$12$WYtIHUiV0PEYewXOftPwj.zhHgWeQ5fjS7ETAmJApWRwMJT2WJAWi');
 INSERT INTO TBUSER(username, password) VALUES ('teste2', '$2a$12$WYtIHUiV0PEYewXOftPwj.zhHgWeQ5fjS7ETAmJApWRwMJT2WJAWi');
 INSERT INTO tbrole(name) VALUES ('USER');

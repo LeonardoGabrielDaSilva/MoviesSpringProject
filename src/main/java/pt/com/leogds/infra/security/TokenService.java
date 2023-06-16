@@ -42,6 +42,6 @@ public class TokenService {
 	}
 
 	private Instant getInstant5MinutesLater() {
-		return LocalDateTime.now().plusDays(5).toInstant(ZoneOffset.of("+00:00"));
+		return LocalDateTime.now().plusMinutes(5).toInstant(ZoneOffset.of("+00:00"));
 	}
 }

@@ -1,5 +1,7 @@
 pt\com\leogds\domain\movie\MovieServiceTemplate.class
+pt\com\leogds\domain\movie\dto\TmdbPageData.class
 pt\com\leogds\domain\movie\dto\MovieTmdbData.class
+pt\com\leogds\domain\movie\dto\ReturnMovieData.class
 pt\com\leogds\domain\movie\MovieType.class
 pt\com\leogds\domain\user\dto\UsernameOnly.class
 pt\com\leogds\infra\security\SecurityConfigurations.class
@@ -18,7 +20,7 @@ pt\com\leogds\controller\AuthenticationController.class
 pt\com\leogds\domain\user\AuthenticationService.class
 pt\com\leogds\infra\security\TokenService.class
 pt\com\leogds\domain\role\Role.class
-pt\com\leogds\domain\movie\dto\DiscoverMoviesData.class
+pt\com\leogds\domain\movie\dto\ImdbListData.class
 pt\com\leogds\domain\role\RoleEnum$Constants.class
 pt\com\leogds\domain\user\dto\ReturnUserData.class
 pt\com\leogds\domain\user\UserRepository.class
@@ -31,9 +33,7 @@ pt\com\leogds\controller\UserController.class
 pt\com\leogds\domain\movie\Movie.class
 pt\com\leogds\domain\movie\MovieRepository.class
 pt\com\leogds\domain\user\dto\UpdateRolesData.class
-pt\com\leogds\infra\general\Resilience4jConfig.class
 pt\com\leogds\domain\movie\MovieServiceImdb.class
-pt\com\leogds\domain\movie\dto\Top250Data.class
 pt\com\leogds\controller\MovieController.class
 pt\com\leogds\infra\error\ErrorTreatment.class
 pt\com\leogds\domain\movie\MovieServiceTmdb.class
