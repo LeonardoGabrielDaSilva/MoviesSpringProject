@@ -1,42 +1,48 @@
-# MoviesSpringProject
+#MoviesSpringProject
+##Visão Geral
+Este projeto Java é uma API baseada no framework Spring, projetada para integrar-se de forma eficiente às APIs do Imdb e Tmdb, obtendo detalhes de filmes e populando um banco de dados. Além de lidar com dados de filmes, a API inclui recursos como autenticação de usuários, listas de filmes favoritos com classificações por estrelas e um sistema de classificação para exibir os filmes mais bem avaliados. O projeto utiliza diversas tecnologias e frameworks para garantir funcionalidade robusta e segurança.
 
+##Recursos e Componentes
+###1. Spring API
+Construído sobre o framework Spring, este projeto fornece uma base sólida para o desenvolvimento de serviços RESTful, com ferramentas para manipulação de solicitações, injeção de dependências e gerenciamento eficiente de dados.
 
-This Java project is a Spring-based API designed to consume the Imdb and Tmdb APIs and populate a database with movies. It provides additional functionality for user login, allowing them to add favorite movies to their list. Each favorite movie is given a star rating, and the API also includes a ranking feature to showcase the top-rated movies. The project utilizes various technologies and frameworks such as Feign, Spring Security with JWT, Spring Data, Roles, Hazelcast cache, CircuitBreaker fallbacks, Swagger, and H2 database.
+###2. Integração com APIs do Imdb e Tmdb
+A API integra-se perfeitamente às APIs do Imdb e Tmdb, obtendo detalhes essenciais de filmes, como títulos, avaliações, datas de lançamento e informações sobre o elenco. Essas APIs externas servem como fontes valiosas de dados para construir e atualizar o banco de dados local de filmes.
 
-Features and Components:
+###3. Autenticação de Usuários e Filmes Favoritos
+Os usuários podem se cadastrar e fazer login na API, permitindo que criem e gerenciem suas listas de filmes favoritos. Cada filme favorito pode receber uma classificação por estrelas, permitindo que os usuários personalizem suas preferências.
 
-Spring API:
-The project is built as a Spring API, which offers a comprehensive framework for developing RESTful services. It provides the necessary tools and features for request handling, dependency injection, and data management.
+###4. Classificação por Estrelas
+O projeto inclui um sistema de classificação por estrelas que calcula e exibe os filmes mais bem avaliados com base nas avaliações dos usuários. Esse mecanismo de classificação aprimora a experiência do usuário, ajudando-os a descobrir filmes altamente avaliados no banco de dados.
 
-Imdb and Tmdb API Integration:
-The API integrates with the Imdb and Tmdb APIs to fetch movie details such as titles, ratings, release dates, and cast information. These external APIs serve as valuable data sources to populate the local movie database.
+###5. Feign
+Feign, um cliente declarativo para serviços web, simplifica as interações com as APIs do Imdb e Tmdb, abstraindo a comunicação HTTP subjacente e oferecendo uma interface clara para consumir endpoints externos.
 
-User Authentication and Favorite Movies:
-Users can register and log in to the API, enabling them to add movies to their favorite list. Each favorite movie is assigned a star rating, allowing users to rate their preferred movies.
+###6. Spring Security com JWT
+Para garantir acesso seguro à API, o Spring Security é implementado em conjunto com Tokens de Web JSON (JWT). Essa combinação facilita a autenticação e autorização do usuário, permitindo que apenas usuários autenticados com tokens válidos executem ações específicas.
 
-Star Ranking:
-The project includes a star ranking feature that calculates and displays the top-rated movies based on user ratings. This ranking system helps users discover highly-rated movies within the database.
+###7. Spring Data
+O Spring Data simplifica operações de banco de dados, oferecendo uma abstração de nível mais alto para operações CRUD e gerenciamento de entidades.
 
-Feign:
-Feign, a declarative web service client, is used to interact with the Imdb and Tmdb APIs. It simplifies the process of making API calls by abstracting the underlying HTTP communication and providing a clean interface for consuming external endpoints.
+###8. Roles
+O controle de acesso baseado em papéis é implementado por meio do Spring Security, permitindo a atribuição de diferentes papéis (por exemplo, usuário e administrador) com privilégios e níveis de acesso específicos.
 
-Spring Security with JWT:
-To ensure secure access to the API, Spring Security is employed in conjunction with JSON Web Tokens (JWT). User authentication and authorization are implemented, allowing only authenticated users with valid tokens to perform certain actions.
+###9. Cache Hazelcast
+O cache Hazelcast é integrado ao projeto para aumentar o desempenho, armazenando em cache dados de filmes frequentemente acessados. Esse mecanismo de cache reduz os tempos de resposta para solicitações subsequentes, aprimorando a experiência do usuário.
 
-Spring Data:
-Spring Data is utilized to handle database operations seamlessly. It provides a higher-level abstraction for interacting with the database, simplifying the implementation of CRUD operations and entity management.
+###10. CircuitBreaker Fallbacks
+Fallbacks do CircuitBreaker aumentam a tolerância a falhas, evitando que falhas em APIs externas, como Imdb e Tmdb, causem falhas em cascata no aplicativo, fornecendo mecanismos alternativos em caso de falhas.
 
-Roles:
-Role-based access control is implemented using Spring Security. Different roles, such as user and admin, can be assigned to users, granting them specific privileges and access levels within the API.
+###11. Banco de Dados H2
+O banco de dados H2 é utilizado para armazenar os dados de filmes obtidos das APIs do Imdb e Tmdb. Conhecido por sua simplicidade e rapidez, o H2 é uma escolha adequada para fins de desenvolvimento e teste.
 
-Hazelcast Cache:
-Hazelcast cache is integrated into the project to improve performance by caching frequently accessed movie data. This caching mechanism reduces the response time for subsequent requests, resulting in a smoother user experience.
+###12. Documentação Swagger
+A documentação da API é realizada com o Swagger, oferecendo uma interface clara e interativa para que os desenvolvedores compreendam e testem os endpoints.
 
-CircuitBreaker Fallbacks:
-To enhance fault tolerance and resilience, CircuitBreaker fallbacks are implemented. They prevent failures in external APIs, such as Imdb and Tmdb, from causing cascading failures in the application by providing alternative fallback mechanisms.
+##Como Começar
+Siga estas etapas para configurar e executar o MoviesSpringProject localmente:
 
-H2 Database:
-The H2 database is utilized to store the movie data fetched from the Imdb and Tmdb APIs. H2 is an in-memory database known for its simplicity and speed, making it a suitable choice for development and testing purposes.
-
-Swagger:
-the documentation was done with Swagger
+Clone o repositório.
+Configure as chaves da API para Imdb e Tmdb.
+Configure o banco de dados usando o H2 ou sua solução de banco de dados preferida.
+Compile e execute o projeto usando o Maven ou sua ferramenta de construção preferida.
